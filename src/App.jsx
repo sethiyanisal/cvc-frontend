@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           
           {/* public routes */}
           <Route path="/" element={<HomePage/>}></Route>
+          <Route path="/Login" element={<SignIn/>}></Route>
         </Route>
       </Routes>
     </div>
