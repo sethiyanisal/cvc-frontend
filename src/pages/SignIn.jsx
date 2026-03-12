@@ -13,7 +13,7 @@ const SignIn = () => {
 
     
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-green-900 via-green-700 to-green-500">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-green-700 via-green-400 to-green-200">
   <NavBar/>
 
   <div className="flex flex-1 justify-center items-center">
@@ -50,7 +50,7 @@ const SignIn = () => {
                                     Sign in
                                 </button>
                             </div>
-                            <p className="mt-2 text-sm text-center text-gray-200">Don&#x27;t have an account yet? <a href="Registration" className="text-green-300 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
+                            <p className="mt-2 text-sm text-center text-gray-200">Don't have an account yet? <a href="Registration" className="text-green-700 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
 
                             {status === true ? <div className="mt-4 flex w-full overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                                 <div className="flex items-center justify-center w-12 bg-red-500">
