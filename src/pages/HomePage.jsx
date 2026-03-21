@@ -14,6 +14,7 @@ import HuskChips from '../images/Products/Husk_Chips.png'
 import GrowBlock from '../images/Products/Grow_Block.jpeg'
 import GrowBrick from '../images/Products/Grow_Brick.jpeg'
 import GrowBag from '../images/Products/Grow_Bag.jpeg'
+import AllUserMap from '../components/AllUserMap';
 
 
 
@@ -39,30 +40,7 @@ const HomePage = () => {
       </div>
 
       <div className="mx-4 my-8">
-        <h1 className="text-center text-5xl text-green-500 tracking-widest font-bold px-4">
-          About Coconut Value Chain
-        </h1>
-      </div>
-
-      <div className="grid justify-items-center mx-4 my-8">
-        <p className="text-xl w-2/3 font-semibold">
-          We proudly introduce you the Sri Lankan company that is 
-          doing a production of high-quality coco peat and husk chips under the registered brand name CHACHÅ COCO. 
-          Our products are high quality because our raw materials such as coco peat and coconut husk chips are obtained from the first coconut triangle in Sri Lanka.
-        </p>
-        <p className="mt-4 text-xl w-2/3 font-semibold">
-        Kurunegala,	Puttalam	and
-        Gampaha districts are the first coconut triangle and it's consisting the largest coconut plantations in Sri Lanka. Kurunegala district consisting
-        550,958	acres,	Puttalam
-        districts	consisting	115,895
-        acres and Gampaha district consisting 106,576 acres' coconut plantations. 
-        In these three districts annual coconut harvest is 5000 million nuts. Our factory is situated in middle of Kurunegala District Kuliyapitiya and regularly we are rich with high quality cocopeat and husk chips.
-        </p>
-        <a href="./AboutUs">
-            <button className=" mt-8 mr-2 mb-2 hover:bg-green-600 text-green-500 hover:text-white font-bold py-3 px-8 border border-green-500 hover:border-green-600">
-              READ MORE
-            </button>
-          </a>
+        <AllUserMap/>
       </div>
 
       <hr className="w-3/4 mx-auto bg-gray-900" />

@@ -1,15 +1,57 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import React,{useState} from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
+import UserService from '../routes/userServiceRoutes';
 
 
 
 const SignIn = () => {
+
+    const navigateTo = useNavigate();
+    const location = useLocation();
+    const { setAuthUser } = useAuthContext();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [status, setStatus] = useState("");
     const [message, setMessage] = useState('');
 
+    const from = location?.state?.from?.pathname || "/";
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const user = {
+            email:email,
+            password:password
+        }
+        
+        UserService
+        .signInUser(user)
+        .then((res) => {
+
+            setStatus(res.data.error);
+            setMessage(res.data.message);
+
+            if(res.data.error === true){
+
+            }else{
+                const logged_user = res.data.user;
+                setAuthUser({logged_user});
+                localStorage.setItem('user', JSON.stringify(logged_user));
+                localStorage.setItem('isLoggedIn', true);
+                navigateTo(from, { replace: true });
+            }
+
+        })
+        .catch((error) => {
+        console.log(error);
+
+        
+    });
+   
+    };
     
   return (
     <div className="h-screen flex flex-col bg-gradient-to-br from-green-700 via-green-400 to-green-200">
@@ -28,7 +70,7 @@ const SignIn = () => {
         </div>
 
         <div className="mt-10 px-20">
-                        <form >
+                        <form onSubmit={handleSubmit}>
                             <div >
                                 <label htmlFor="email" className="flex justify-start block mb-2 font-semibold text-sm text-gray-200">Email</label>
                                 <input onChange={(e) => setEmail(e.target.value)}  type="email" name="email" id="email" placeholder="user@gmail.com" className="w-full p-3 rounded-lg border border-gray-300 bg-white/90 focus:outline-none focus:ring-2 focus:ring-green-400" />
