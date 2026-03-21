@@ -1,6 +1,5 @@
 import NavBar from '../components/NavBar';
 import React,{useState} from 'react';
-import backgroundImage from '../images/284090-P6KV60-843.jpg'
 
 
 
@@ -50,7 +49,7 @@ const SignIn = () => {
                                     Sign in
                                 </button>
                             </div>
-                            <p className="mt-2 text-sm text-center text-gray-200">Don't have an account yet? <a href="Registration" className="text-green-700 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
+                            <p className="mt-2 text-sm text-center text-gray-200">Don't have an account yet? <a href="/SignUp" className="text-green-700 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
 
                             {status === true ? <div className="mt-4 flex w-full overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                                 <div className="flex items-center justify-center w-12 bg-red-500">
