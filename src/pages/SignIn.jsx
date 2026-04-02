@@ -17,8 +17,6 @@ const SignIn = () => {
     const [status, setStatus] = useState("");
     const [message, setMessage] = useState('');
 
-    const from = location?.state?.from?.pathname || "/";
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -31,17 +29,24 @@ const SignIn = () => {
         .signInUser(user)
         .then((res) => {
 
+            if(res.data.error === true){
+
             setStatus(res.data.error);
             setMessage(res.data.message);
 
-            if(res.data.error === true){
-
             }else{
                 const logged_user = res.data.user;
-                setAuthUser({logged_user});
+                setAuthUser({ user: logged_user });
                 localStorage.setItem('user', JSON.stringify(logged_user));
                 localStorage.setItem('isLoggedIn', true);
-                navigateTo(from, { replace: true });
+                
+                if (logged_user.role === "Planter"){
+                    navigateTo("/PlanterMainPage");
+                }
+
+                if (logged_user.role === "Admin"){
+                    navigateTo("/AdminMainPage");
+                }
             }
 
         })

@@ -26,10 +26,12 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(role === "Planter" || role === "Seller" || role === "AgriOfficer"){
     if (!location.lat || !location.lng) {
       alert('Please select a location')
       return
     }
+  }
 
     const user = {
         firstName: firstName,
@@ -41,8 +43,6 @@ const SignUp = () => {
         latitude: location.lat || null,
         longitude: location.lng || null
     }
-
-    console.log("sdsdsd", user);
    
     UserService
         .signUpUser(user)
