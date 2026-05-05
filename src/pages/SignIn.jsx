@@ -47,6 +47,10 @@ const SignIn = () => {
                 if (logged_user.role === "Admin"){
                     navigateTo("/AdminMainPage");
                 }
+
+                if (logged_user.role === "Buyer"){
+                    navigateTo("/BuyerMainPage");
+                }
             }
 
         })

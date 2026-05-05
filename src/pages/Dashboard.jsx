@@ -67,6 +67,7 @@ export default function Dashboard() {
           p.price_type === priceType &&
           toDateOnly(p.price_date) === todayStr
       );
+      
 
       const yesterdayItem = prices.find(
         (p) =>

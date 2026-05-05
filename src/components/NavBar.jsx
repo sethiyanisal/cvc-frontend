@@ -26,6 +26,8 @@ const NavBar = () => {
       navigateTo("/PlanterMainPage");
     }else if(authUser?.user?.role === "Admin"){
       navigateTo("/AdminMainPage");
+    }else if(authUser?.user?.role === "Buyer"){
+      navigateTo("/BuyerMainPage");
     }
   }
 

@@ -12,13 +12,15 @@ import PlanterMainPage from './pages/Planter/PlanterMainPage';
 import RequireAuth from './components/RequireAuth';
 import Unauthorized from './components/Unauthorized';
 import AdminMainPage from './pages/Admin/AdminMainPage';
+import BuyerMainPage from './pages/Buyer/BuyerMainPage';
 
 function App() {
 
   const ROLES = {
     "Planter": 'Planter',
     "Seller": 'Seller',
-    "Admin": 'Admin'
+    "Admin": 'Admin',
+    "Buyer": 'Buyer'
   }
 
   return (
@@ -39,6 +41,10 @@ function App() {
 
           <Route element={<RequireAuth allowedRole={[ROLES.Admin]}/>}>
                 <Route path='/AdminMainPage' element={<AdminMainPage/>}></Route>
+          </Route>
+
+          <Route element={<RequireAuth allowedRole={[ROLES.Buyer]}/>}>
+                <Route path='/BuyerMainPage' element={<BuyerMainPage/>}></Route>
           </Route>
 
            <Route path='/unauthorized' element={<Unauthorized/>}></Route>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import AdminSideBar from "./AdminSideBar";
 import AdminAddPrice from "./AdminAddPrice";
+import AdminDashboardCards from "./AdminDashboardCards";
 
 const AdminMainPage = () => {
     const [selectedOption, setSelectedOption] = useState("Dashboard");
@@ -23,9 +24,9 @@ const AdminMainPage = () => {
             {selectedOption === "Dashboard" && (
               <div className="text-center">
                 <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
-                <p>Welcome to your Planter Dashboard.</p>
+                <p>Welcome to your Admin Dashboard.</p>
               </div>
-            )}
+            ) && <AdminDashboardCards />}
 
             {selectedOption === "AddPrice" && <AdminAddPrice />}
           </div>
