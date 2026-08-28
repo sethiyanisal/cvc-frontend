@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import BuyerSideBar from "./BuyerSideBar";
 import BuyingPrice from "./BuyingPrice";
+import BuyerDashboardCards from "./BuyerDashboardCards";
 
 const BuyerMainPage = () => {
   const [selectedOption, setSelectedOption] = useState("Dashboard");
@@ -29,7 +30,7 @@ const BuyerMainPage = () => {
                   <p>Welcome to your Buyer Dashboard.</p>
                 </div>
               </>
-            )}
+            ) && <BuyerDashboardCards/>}
 
             {selectedOption === "BuyingPrice" && <BuyingPrice />}
 

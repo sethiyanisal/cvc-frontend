@@ -19,7 +19,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip,
 
 const roleColors = {
   Planter: "bg-green-400",
-  Seller: "bg-orange-400",
+  Buyer: "bg-orange-400",
   AgriOfficer: "bg-blue-400",
 };
 
@@ -36,7 +36,7 @@ export default function Dashboard() {
   });
 
   const planterCount = users.filter(u => u.role === "Planter").length;
-  const sellerCount = users.filter(u => u.role === "Seller").length;
+  const buyerCount = users.filter(u => u.role === "Buyer").length;
   const agroCount = users.filter(u => u.role === "AgriOfficer").length;
   const totalCount = users.length;
 
@@ -67,8 +67,8 @@ export default function Dashboard() {
           p.price_type === priceType &&
           toDateOnly(p.price_date) === todayStr
       );
-      
 
+      
       const yesterdayItem = prices.find(
         (p) =>
           p.coconut_type === "With Husk" &&
@@ -76,16 +76,24 @@ export default function Dashboard() {
           toDateOnly(p.price_date) === yesterdayStr
       );
 
-      if (!todayItem || !yesterdayItem) return null;
+    if (!todayItem) return null;
 
-      const percent =
-        ((todayItem.price - yesterdayItem.price) / yesterdayItem.price) * 100;
-
+    if (!yesterdayItem) {
       return {
-        percent: Math.abs(percent).toFixed(1),
-        isUp: percent >= 0,
+        percent: "0.0",
+        isUp: true,
         price: todayItem.price,
       };
+    }
+
+    const percent =
+      ((todayItem.price - yesterdayItem.price) / yesterdayItem.price) * 100;
+
+    return {
+      percent: Math.abs(percent).toFixed(1),
+      isUp: percent >= 0,
+      price: todayItem.price,
+    };
     };
 
     setChangeInfo(getChange("Wholesale"));
@@ -263,7 +271,7 @@ export default function Dashboard() {
               <div className="flex gap-3 flex-wrap mt-4">
                 {[
                   ["planterCount", planterCount, "Planters", "text-green-400"],
-                  ["sellerCount", sellerCount, "Sellers", "text-orange-400"],
+                  ["buyerCount", buyerCount, "Buyers", "text-orange-400"],
                   ["agroCount", agroCount, "Agronomists", "text-yellow-400"],
                 ].map(([k, n, l, color]) => (
                   <div key={k} className="flex items-center gap-2 border border-green-900 bg-[#0c1f14] rounded-lg px-4 py-2 text-xs">
@@ -284,7 +292,7 @@ export default function Dashboard() {
                       />
                       <div
                         className="bg-orange-400"
-                        style={{ width: `${((sellerCount / totalCount) * 100).toFixed(1)}%` }}
+                        style={{ width: `${((buyerCount / totalCount) * 100).toFixed(1)}%` }}
                       />
                       <div
                         className="bg-yellow-400"
@@ -323,7 +331,7 @@ export default function Dashboard() {
         {/* Tabs */}
         <div className="bg-[#111f16] p-6 rounded-xl border border-green-900">
           <div className="flex mb-4">
-            {["Planter", "Seller", "AgriOfficer"].map((tab) => (
+            {["Planter", "Buyer", "AgriOfficer"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}

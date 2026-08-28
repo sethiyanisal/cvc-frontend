@@ -44,9 +44,16 @@ const NavBar = () => {
 
         {/* LEFT */}
         <div className="flex items-center justify-between">
-          <a href="#">
-            <img className="w-auto h-9" src={LOGO} alt="" />
-          </a>
+          <div className="flex flex-col items-start justify-center">
+            <div className="text-2xl font-bold">
+              <span className="text-green-600">Coco</span>
+              <span className="text-orange-500">Net</span>
+            </div>
+
+            <div className="text-xs text-gray-500 tracking-wide">
+              coconut industry platform
+            </div>
+          </div>
         </div>
 
         {/* CENTER LINKS */}
@@ -54,34 +61,6 @@ const NavBar = () => {
 
           <a className="text-green-200 hover:text-green-400 transition" href="/">HOME</a>
           <a className="text-green-200 hover:text-green-400 transition" href="#">ABOUT US</a>
-
-          {/* PRODUCTS */}
-          <div className="flex items-center space-x-2 relative">
-            <a className="text-green-200 hover:text-green-400 transition" href="/Gallery">PRODUCTS</a>
-
-            <div className="relative inline-block">
-              <button onClick={handleClick} className="p-1 text-green-300">
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-
-              {isOpen && (
-                <div
-                  onClick={handleOutsideClick}
-                  className="absolute right-0 top-full mt-2 z-50 w-48 bg-[#0a1a0f] border border-green-900 rounded-md shadow-lg text-green-200"
-                >
-                  <a href="#" className="block px-4 py-2 text-sm hover:bg-green-900/40">Coco chips</a>
-                  <a href="#" className="block px-4 py-2 text-sm hover:bg-green-900/40">Coco peat product</a>
-                  <a href="#" className="block px-4 py-2 text-sm hover:bg-green-900/40">Coco fiber product</a>
-                </div>
-              )}
-            </div>
-          </div>
 
           <a className="text-green-200 hover:text-green-400 transition" href="#">CONTACT US</a>
         </div>

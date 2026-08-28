@@ -12,10 +12,15 @@ const updatePrice = (id, price) =>{
   return Axios.put("/Planter/UpdatePrice/" + id, price);
 }
 
+const getAllPrices = () => {
+  return Axios.get("/Planter/GetAllPrices");
+}
+
 const PlanterService = {
     addPrice,
     getPrice,
-    updatePrice
+    updatePrice,
+    getAllPrices
   };
     
 export default PlanterService;
